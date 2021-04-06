@@ -1,3 +1,10 @@
+//
+//  {name}View.swift
+//  {project}
+//
+//  Created by {author} on {date}.
+//
+
 import Foundation
 import Swinject
 import SwinjectAutoregistration
