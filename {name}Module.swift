@@ -47,20 +47,29 @@ protocol {name}ModuleInterface: ModuleInterface {
 
 final class {name}Module: {name}ModuleInterface {
 
-    typealias View = {name}View
-    typealias Presenter = {name}Presenter
-    typealias Router = {name}Router
-    typealias Interactor = {name}Interactor
+    typealias View = {name}ViewInterface
+    typealias Presenter = {name}PresenterInterface
+    typealias Router = {name}RouterInterface
+    typealias Interactor = {name}InteractorInterface
 
-    func build() -> UIViewController {
-        let view = View()
-        let interactor = Interactor()
-        let presenter = Presenter()
-        let router = Router()
+    func build() -> UIViewController? {
+        let resolver = MainAssembler.shared.assembler.resolver
 
-        self.assemble(view: view, presenter: presenter, router: router, interactor: interactor)
+        let view = resolver.resolve(View.self) as? {name}HomeView
+        let presenter = resolver.resolve(Presenter.self) as? {name}HomePresenter
+        let router = resolver.resolve(Router.self) as? {name}HomeRouter
+        let interactor = resolver.resolve(Interactor.self) as? {name}HomeInteractor
 
-        router.viewController = view
+        if let view = view, let presenter = presenter, let router = router, let interactor = interactor {
+            presenter.interactor = interactor
+            presenter.router = router
+            presenter.view = view
+            router.viewController = view
+            interactor.presenter = presenter
+            view.presenter = presenter
+        } else {
+            return UIViewController()
+        }
 
         return view
     }
