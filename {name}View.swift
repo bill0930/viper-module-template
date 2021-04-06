@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-final class {name}View: UIViewController, ViewInterface {
+protocol {name}ViewInterface: ViewInterface {
+
+}
+
+final class {name}View: UIViewController, {name}ViewInterface {
 
     var presenter: {name}PresenterViewInterface!
 

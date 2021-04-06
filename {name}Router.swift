@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-final class {name}Router: RouterInterface {
+protocol {name}RouterInterface: RouterInterface {
+    
+}
+
+final class {name}Router: {name}RouterInterface {
 
     weak var presenter: {name}PresenterRouterInterface!
 

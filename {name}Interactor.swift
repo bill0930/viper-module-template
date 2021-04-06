@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class {name}Interactor: InteractorInterface {
+protocol {name}InteractorInterface: InteractorInterface {
+
+}
+
+final class {name}Interactor: {name}InteractorInterface {
 
     weak var presenter: {name}PresenterInteractorInterface!
 }

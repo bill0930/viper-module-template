@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class {name}Presenter: PresenterInterface {
+protocol {name}PresenterInterface: PresenterInterface {
+
+}
+
+final class {name}Presenter: {name}PresenterInterface {
 
     var router: {name}RouterPresenterInterface!
     var interactor: {name}InteractorPresenterInterface!

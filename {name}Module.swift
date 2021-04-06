@@ -39,10 +39,13 @@ protocol {name}ViewPresenterInterface: ViewPresenterInterface {
 
 }
 
+protocol {name}ModuleInterface: ModuleInterface {
+
+}
 
 // MARK: - module builder
 
-final class {name}Module: ModuleInterface {
+final class {name}Module: {name}ModuleInterface {
 
     typealias View = {name}View
     typealias Presenter = {name}Presenter
